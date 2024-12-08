@@ -28,8 +28,12 @@ import { Level } from "@tiptap/extension-heading";
 // import Color from "@tiptap/extension-color";
 import { ColorResult, SketchPicker } from "react-color";
 
+
+
 const HighlightColorButton = () => {
   const { editor } = useEditorStore();
+
+  const value = editor?.getAttributes("highlight").color || "#ffffff";
 
   const onChange = (color: ColorResult) => {
     editor?.chain().focus().setHighlight({ color: color.hex }).run();
@@ -43,7 +47,7 @@ const HighlightColorButton = () => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-0">
-        <SketchPicker onChange={onChange} />
+      <SketchPicker color={value} onChange={onChange} />
       </DropdownMenuContent>
     </DropdownMenu>
   );
