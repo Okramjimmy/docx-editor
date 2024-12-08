@@ -9,7 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-git_commit_push.sh
+
 # testing
 /coverage
 
