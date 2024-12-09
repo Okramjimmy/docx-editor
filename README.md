@@ -113,4 +113,4 @@ npm install --legacy-peer-deps
 
 <!-- =============================================================== -->
 
-Yaraba???
+Eigi Systemdei yengbane
