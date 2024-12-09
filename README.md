@@ -106,3 +106,11 @@ npm install @tiptap/extension-link@2.10.3 --legacy-peer-deps
 npm install @tiptap/extension-text-align@2.10.3 --legacy-peer-deps
 
 <!-- da clinton -->
+
+<!-- ================================================================ -->
+
+npm install --legacy-peer-deps
+
+<!-- =============================================================== -->
+
+Yaraba???
