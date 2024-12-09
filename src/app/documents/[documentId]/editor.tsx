@@ -19,6 +19,8 @@ import Underline from "@tiptap/extension-underline";
 import ImageResize from "tiptap-extension-resize-image";
 import { useEditorStore } from "@/store/use-editor-store";
 
+import { FontSizeExtension } from "@/extensions/font-size";
+
 export const Editor = () => {
   const { setEditor } = useEditorStore();
 
@@ -56,6 +58,7 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      FontSizeExtension, // Add your custom extensions here...
       TextAlign.configure({
         types: ["heasding", "paragraph"],
       }),

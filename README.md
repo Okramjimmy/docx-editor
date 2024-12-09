@@ -111,6 +111,13 @@ npm install @tiptap/extension-text-align@2.10.3 --legacy-peer-deps
 
 npm install --legacy-peer-deps
 
-<!-- =============================================================== -->
-
 Eigi Systemdei yengbane
+
+<!-- ===================. -->
+
+./git_commit_push.sh "text"
+git pull origin main --rebase
+
+<!-- =================================== -->
+
+npm install react-icons@5.4.0 --legacy-peer-deps
