@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BsFilePdf } from "react-icons/bs";
 import {
+  BoldIcon,
   FileIcon,
   FileJsonIcon,
   FilePenIcon,
@@ -12,6 +13,7 @@ import {
   GlobeIcon,
   PrinterIcon,
   Redo2Icon,
+  TextIcon,
   TrashIcon,
   Undo2Icon,
 } from "lucide-react";
@@ -115,11 +117,36 @@ export const Navbar = () => {
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   Insert
                 </MenubarTrigger>
+                <MenubarContent>
+                  <MenubarSub>
+                    <MenubarSubTrigger>Table</MenubarSubTrigger>
+                    <MenubarSubContent>
+                      <MenubarItem>1 X 1</MenubarItem>
+                      <MenubarItem>2 X 2</MenubarItem>
+                      <MenubarItem>3 X 3</MenubarItem>
+                      <MenubarItem>4 X 4</MenubarItem>
+                    </MenubarSubContent>
+                  </MenubarSub>
+                </MenubarContent>
               </MenubarMenu>
               <MenubarMenu>
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   Format
                 </MenubarTrigger>
+                <MenubarContent>
+                  <MenubarSub>
+                    <MenubarSubTrigger>
+                      <TextIcon className="size-4 mr-2" />
+                      Text
+                    </MenubarSubTrigger>
+                    <MenubarSubContent>
+                      <MenubarItem>
+                        <BoldIcon className="size-4 mr-2" />
+                        Bold
+                      </MenubarItem>
+                    </MenubarSubContent>
+                  </MenubarSub>
+                </MenubarContent>
               </MenubarMenu>
             </Menubar>
           </div>
