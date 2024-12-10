@@ -89,3 +89,22 @@ npm i react-icons@5.4.0 --legacy-peer-deps
 =================================
 
 4:20:46
+
+================================
+
+ `
+        <table>
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <th colspan="3">Description</th>
+            </tr>
+            <tr>
+              <td>Cyndi Lauper</td>
+              <td>Singer</td>
+              <td>Songwriter</td>
+              <td>Actress</td>
+            </tr>
+          </tbody>
+        </table>
+      `
