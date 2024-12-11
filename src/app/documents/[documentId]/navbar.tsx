@@ -9,7 +9,9 @@ import {
   FileJsonIcon,
   FilePenIcon,
   FilePlus,
+  FilePlus2,
   FileTextIcon,
+  FileUpIcon,
   GlobeIcon,
   ItalicIcon,
   PrinterIcon,
@@ -37,6 +39,7 @@ import {
 
 import { DocumentInput } from "./document-input";
 import { useEditorStore } from "@/store/use-editor-store";
+import { jsPDF } from "jspdf";
 
 export const Navbar = () => {
   const { editor } = useEditorStore();
@@ -75,6 +78,24 @@ export const Navbar = () => {
       type: "text/html",
     });
     onDownload(blob, "document.html"); //TODO: Use document name
+  };
+
+  const onSavePDF = (documentName?: string) => {
+    if (!editor) return;
+
+    const content = editor.getHTML();
+
+    const doc = new jsPDF();
+
+    doc.html(content, {
+      callback: (doc) => {
+        // Use documentName if available, otherwise fallback to "document.pdf"
+        const filename = documentName ? `${documentName}.pdf` : "document.pdf";
+        doc.save(filename);
+      },
+      x: 10,
+      y: 10,
+    });
   };
 
   const onSaveText = () => {
@@ -121,7 +142,7 @@ export const Navbar = () => {
                         <GlobeIcon className="size-4 mr-2" />
                         HTML
                       </MenubarItem>
-                      <MenubarItem onClick={() => window.print()}>
+                      <MenubarItem onClick={() => onSavePDF()}>
                         <BsFilePdf className="size-4 mr-2" />
                         PDF
                       </MenubarItem>
@@ -134,6 +155,11 @@ export const Navbar = () => {
                   <MenubarItem>
                     <FilePlus className="size-4 mr-2" />
                     New Document
+                  </MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>
+                    <FileUpIcon className="size-4 mr-2" />
+                    Open
                   </MenubarItem>
                   <MenubarSeparator />
                   <MenubarItem>
