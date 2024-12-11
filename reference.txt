@@ -118,3 +118,26 @@ npm i jspdf@2.5.2 ---legacy-peer-deps
 
 
 Department========================================
+
+==================================PDF
+
+  const onSavePDF = (documentName?: string) => {
+    if (!editor) return;
+
+    const content = editor.getHTML();
+
+    const doc = new jsPDF();
+
+    doc.html(content, {
+      callback: (doc) => {
+        // Use documentName if available, otherwise fallback to "document.pdf"
+        const filename = documentName ? `${documentName}.pdf` : "document.pdf";
+        doc.save(filename);
+      },
+      x: 10,
+      y: 10,
+    });
+  };
+
+
+  onClick={() => onSavePDF()}

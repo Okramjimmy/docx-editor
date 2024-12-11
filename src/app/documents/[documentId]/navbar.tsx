@@ -80,24 +80,6 @@ export const Navbar = () => {
     onDownload(blob, "document.html"); //TODO: Use document name
   };
 
-  const onSavePDF = (documentName?: string) => {
-    if (!editor) return;
-
-    const content = editor.getHTML();
-
-    const doc = new jsPDF();
-
-    doc.html(content, {
-      callback: (doc) => {
-        // Use documentName if available, otherwise fallback to "document.pdf"
-        const filename = documentName ? `${documentName}.pdf` : "document.pdf";
-        doc.save(filename);
-      },
-      x: 10,
-      y: 10,
-    });
-  };
-
   const onSaveText = () => {
     if (!editor) return;
 
@@ -142,7 +124,7 @@ export const Navbar = () => {
                         <GlobeIcon className="size-4 mr-2" />
                         HTML
                       </MenubarItem>
-                      <MenubarItem onClick={() => onSavePDF()}>
+                      <MenubarItem onClick={() => window.print()}>
                         <BsFilePdf className="size-4 mr-2" />
                         PDF
                       </MenubarItem>
