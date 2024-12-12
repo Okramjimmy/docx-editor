@@ -37,6 +37,7 @@ export const Editor = () => {
         const response = await fetch("/api/getConvertToken");
         if (!response.ok) throw new Error("Failed to fetch token");
         const { token } = await response.json();
+        console.log(token);
         setToken(token);
       } catch (err) {
         console.error("Error fetching token:", err);
@@ -106,6 +107,13 @@ export const Editor = () => {
       TableRow,
       TaskItem.configure({
         nested: true,
+      }),
+      Import.configure({
+        // The Convert App-ID from the Convert settings page: https://cloud.tiptap.dev/convert-settings
+        appId: token?.toString(),
+  
+        // The JWT token you generated in the previous step
+        token: '8mz4xr3',
       }),
       TaskList,
     ],

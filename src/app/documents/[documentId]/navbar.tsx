@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { BsFilePdf } from "react-icons/bs";
 import {
+  BoldIcon,
+  ImportIcon,
   FileIcon,
   FileJsonIcon,
   FilePenIcon,
@@ -38,7 +40,6 @@ import {
 
 import { DocumentInput } from "./document-input";
 import { useEditorStore } from "@/store/use-editor-store";
-import { jsPDF } from "jspdf";
 
 export const Navbar = () => {
   const { editor } = useEditorStore();
