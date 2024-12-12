@@ -16,7 +16,7 @@ export const Navbar = () => {
         </Link>
         <h3 className="text=xl">Docs</h3>
       </div>
-      <SearchInput />
+      {/* <SearchInput /> */}
       <div />
     </nav>
   );
