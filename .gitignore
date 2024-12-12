@@ -14,7 +14,7 @@ github_ssh
 # testing
 /coverage
 .npmrc
-.env.local
+.env
 # next.js
 /.next/
 /out/

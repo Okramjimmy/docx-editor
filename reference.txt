@@ -142,4 +142,7 @@ Department========================================
 
   onClick={() => onSavePDF()}
 
-   npm install jsonwebtoken  --legacy-peer-deps
+   npm install jsonwebtoken@9.0.2  --legacy-peer-deps
+
+   ================================
+   npm i nuqs@2.2.3 --legacy-peer-deps
