@@ -37,6 +37,7 @@
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.4",
+    "@tiptap-pro/extension-import": "^2.16.3",
     "@tiptap/extension-color": "^2.10.3",
     "@tiptap/extension-font-family": "^2.10.3",
     "@tiptap/extension-heading": "^2.10.3",
@@ -61,7 +62,6 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.5.1",
     "input-otp": "^1.4.1",
-    "jspdf": "^2.5.2",
     "lucide-react": "^0.465.0",
     "next": "15.0.3",
     "next-themes": "^0.4.3",
@@ -82,13 +82,16 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-color": "^3.0.12",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
+    "jest": "^29.7.0",
     "postcss": "^8",
+    "supertest": "^7.0.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { BsFilePdf } from "react-icons/bs";
 import {
-  BoldIcon,
   FileIcon,
   FileJsonIcon,
   FilePenIcon,
@@ -134,6 +133,10 @@ export const Navbar = () => {
                       </MenubarItem>
                     </MenubarSubContent>
                   </MenubarSub>
+                  <MenubarItem>
+                    <ImportIcon className="size-4 mr-2" />
+                    Import
+                  </MenubarItem>
                   <MenubarItem>
                     <FilePlus className="size-4 mr-2" />
                     New Document

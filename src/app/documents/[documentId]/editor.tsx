@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TaskItem from "@tiptap/extension-task-item";
@@ -18,6 +19,8 @@ import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import ImageResize from "tiptap-extension-resize-image";
 import { useEditorStore } from "@/store/use-editor-store";
+import { Import } from '@tiptap-pro/extension-import'
+
 
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
@@ -25,7 +28,24 @@ import { Ruler } from "./ruler";
 
 export const Editor = () => {
   const { setEditor } = useEditorStore();
+  const [token, setToken] = useState<string | null>(null);
 
+  // Fetch token from API
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const response = await fetch("/api/getConvertToken");
+        if (!response.ok) throw new Error("Failed to fetch token");
+        const { token } = await response.json();
+        setToken(token);
+      } catch (err) {
+        console.error("Error fetching token:", err);
+      }
+    };
+
+    fetchToken();
+  }, []);
+  
   const editor = useEditor({
     immediatelyRender: false,
     onCreate({ editor }) {

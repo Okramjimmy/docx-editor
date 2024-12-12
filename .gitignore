@@ -13,7 +13,8 @@ github_ssh.pub
 github_ssh
 # testing
 /coverage
-
+.npmrc
+.env.local
 # next.js
 /.next/
 /out/
