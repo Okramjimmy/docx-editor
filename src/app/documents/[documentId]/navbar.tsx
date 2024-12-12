@@ -40,6 +40,7 @@ import {
 
 import { DocumentInput } from "./document-input";
 import { useEditorStore } from "@/store/use-editor-store";
+import { useState } from "react";
 
 export const Navbar = () => {
   const { editor } = useEditorStore();
@@ -88,6 +89,14 @@ export const Navbar = () => {
       type: "text/plain",
     });
     onDownload(blob, "document.txt"); //TODO: Use document name
+  };
+
+  // State to hold dynamic row and column values
+  const [rows, setRows] = useState(1);
+  const [cols, setCols] = useState(1);
+
+  const handleInsertTable = () => {
+    insertTable({ rows, cols });
   };
 
   return (
@@ -163,6 +172,7 @@ export const Navbar = () => {
                   </MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
+
               <MenubarMenu>
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   Edit
@@ -182,6 +192,7 @@ export const Navbar = () => {
                   </MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
+
               <MenubarMenu>
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   Insert
@@ -191,29 +202,44 @@ export const Navbar = () => {
                     <MenubarSubTrigger>Table</MenubarSubTrigger>
                     <MenubarSubContent>
                       <MenubarItem
-                        onClick={() => insertTable({ rows: 1, cols: 1 })}
+                        onClick={handleInsertTable}
+                        className="text-sm p-1 hover:bg-muted"
                       >
-                        1 X 1
+                        Insert Table ({rows} X {cols})
                       </MenubarItem>
-                      <MenubarItem
-                        onClick={() => insertTable({ rows: 2, cols: 2 })}
-                      >
-                        2 X 2
-                      </MenubarItem>
-                      <MenubarItem
-                        onClick={() => insertTable({ rows: 3, cols: 3 })}
-                      >
-                        3 X 3
-                      </MenubarItem>
-                      <MenubarItem
-                        onClick={() => insertTable({ rows: 4, cols: 4 })}
-                      >
-                        4 X 4
-                      </MenubarItem>
+                      <div className="p-2">
+                        <div className="mb-2">
+                          <label htmlFor="rows" className="text-sm">
+                            Rows:
+                          </label>
+                          <input
+                            type="number"
+                            id="rows"
+                            value={rows}
+                            onChange={(e) => setRows(Number(e.target.value))}
+                            min="1"
+                            className="ml-2 p-1 border rounded-sm"
+                          />
+                        </div>
+                        <div className="mb-2">
+                          <label htmlFor="cols" className="text-sm">
+                            Columns:
+                          </label>
+                          <input
+                            type="number"
+                            id="cols"
+                            value={cols}
+                            onChange={(e) => setCols(Number(e.target.value))}
+                            min="1"
+                            className="ml-2 p-1 border rounded-sm"
+                          />
+                        </div>
+                      </div>
                     </MenubarSubContent>
                   </MenubarSub>
                 </MenubarContent>
               </MenubarMenu>
+
               <MenubarMenu>
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   Format
@@ -247,7 +273,7 @@ export const Navbar = () => {
                         }
                       >
                         <UnderlineIcon className="size-4 mr-2" />
-                        Underlin <MenubarShortcut>⌘U</MenubarShortcut>
+                        Underline <MenubarShortcut>⌘U</MenubarShortcut>
                       </MenubarItem>
                       <MenubarItem
                         onClick={() =>
@@ -255,7 +281,7 @@ export const Navbar = () => {
                         }
                       >
                         <StrikethroughIcon className="size-4 mr-2" />
-                        <span>Strickthrough &nbsp;&nbsp;&nbsp;</span>{" "}
+                        <span>Strikethrough</span>
                         <MenubarShortcut>⌘S</MenubarShortcut>
                       </MenubarItem>
                     </MenubarSubContent>
