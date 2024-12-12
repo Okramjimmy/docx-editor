@@ -29,7 +29,7 @@ import { Ruler } from "./ruler";
 export const Editor = () => {
   const { setEditor } = useEditorStore();
   const [token, setToken] = useState<string | null>(null);
-  console.log("jwt : ",process.env.JWT_SECRET);
+  // console.log("jwt : ",process.env.JWT_SECRET);
   // Fetch token from API
   useEffect(() => {
     const fetchToken = async () => {
