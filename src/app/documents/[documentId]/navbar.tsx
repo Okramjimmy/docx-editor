@@ -201,12 +201,6 @@ export const Navbar = () => {
                   <MenubarSub>
                     <MenubarSubTrigger>Table</MenubarSubTrigger>
                     <MenubarSubContent>
-                      <MenubarItem
-                        onClick={handleInsertTable}
-                        className="text-sm p-1 hover:bg-muted"
-                      >
-                        Insert Table ({rows} X {cols})
-                      </MenubarItem>
                       <div className="p-2">
                         <div className="mb-2">
                           <label htmlFor="rows" className="text-sm">
@@ -234,6 +228,12 @@ export const Navbar = () => {
                             className="ml-2 p-1 border rounded-sm"
                           />
                         </div>
+                        <MenubarItem
+                          onClick={handleInsertTable}
+                          className="text-sm p-1 hover:bg-muted"
+                        >
+                          Insert Table ({rows} X {cols})
+                        </MenubarItem>
                       </div>
                     </MenubarSubContent>
                   </MenubarSub>
