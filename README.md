@@ -2,6 +2,18 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+First, install the dependencies. If you encounter any issues with peer dependencies, you can use the `--legacy-peer-deps` flag:
+
+```bash
+npm install --legacy-peer-deps
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+
+
 First, run the development server:
 
 ```bash
