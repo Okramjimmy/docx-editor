@@ -822,7 +822,6 @@ import JSZip from "jszip"; // For ZIP file extraction
 
 import { Navbar } from "./navbar";
 import { TemplateGallery } from "./templates-gallery";
-import { Upload } from "lucide-react";
 
 const HomePage = () => {
   const [uploading, setUploading] = useState(false);
@@ -834,7 +833,8 @@ const HomePage = () => {
     if (templateId === "upload") {
       handleFileUpload(); // Trigger file upload
     } else if (templateId === "blank") {
-      router.push("/documents/new"); // Navigate to create a new document
+      localStorage.removeItem("htmlContent"); // Clear localStorage when creating a new document
+      router.push("/documents/new"); // Navigate to create a new document (fresh editor)
     }
   };
 
@@ -885,7 +885,7 @@ const HomePage = () => {
               extractedHtmlContent = content;
               setHtmlContent(content);
               localStorage.setItem("htmlContent", content); // Store in localStorage
-              router.push("/documents/{file-name}"); // Redirect to the editor with the loaded content
+              router.push("/documents/new"); // Redirect to the editor with the loaded content
             });
           }
         });
@@ -909,7 +909,6 @@ const HomePage = () => {
         <TemplateGallery onTemplateSelect={onTemplateSelect} />
       </div>
       <div className="flex flex-col items-center justify-center mt-10">
-        <h1 className="text-3xl font-bold mb-6">Welcome to Doc. Editor</h1>
         {uploading && (
           <p className="mt-4 text-blue-500">
             Uploading and processing your file...

@@ -591,7 +591,7 @@ export const Editor = () => {
       setContent(storedHtmlContent); // Use stored content if available
     } else {
       // Start with an empty document if no content is stored
-      setContent("<html><body><h1>New Document</h1></body></html>");
+      setContent("");
     }
   }, []);
 
