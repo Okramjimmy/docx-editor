@@ -10,7 +10,6 @@ import {
   FileJsonIcon,
   FilePenIcon,
   FilePlus,
-  FilePlus2,
   FileTextIcon,
   FileUpIcon,
   GlobeIcon,
