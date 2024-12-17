@@ -9,7 +9,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { templates } from "@/constants/templates";
-import { useRouter } from "next/navigation"; // For navigation
 
 interface TemplateGalleryProps {
   onTemplateSelect: (templateId: string) => void;
