@@ -170,3 +170,6 @@ npm i axios@1.7.9 --legacy-peer-deps
 ================================
 
 npm i jszip@3.10.1 --legacy-peer-deps
+
+================================
+npm i --legacy-peer-deps
