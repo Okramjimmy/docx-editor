@@ -98,6 +98,46 @@ export const Navbar = () => {
     insertTable({ rows, cols });
   };
 
+  // State to track full screen status
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const toggleFullScreen = () => {
+    const element = document.documentElement; // Or any specific element you want to make fullscreen
+
+    if (
+      document.fullscreenElement ||
+      (document as any).webkitFullscreenElement ||
+      (document as any).mozFullScreenElement ||
+      (document as any).msFullscreenElement
+    ) {
+      // If already in fullscreen, exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if ((document as any).webkitExitFullscreen) {
+        (document as any).webkitExitFullscreen();
+      } else if ((document as any).mozCancelFullScreen) {
+        (document as any).mozCancelFullScreen();
+      } else if ((document as any).msExitFullscreen) {
+        (document as any).msExitFullscreen();
+      }
+
+      setIsFullScreen(false); // Update the state to reflect exiting fullscreen
+    } else {
+      // If not in fullscreen, request fullscreen
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if ((element as any).webkitRequestFullscreen) {
+        (element as any).webkitRequestFullscreen();
+      } else if ((element as any).msRequestFullscreen) {
+        (element as any).msRequestFullscreen();
+      } else if ((element as any).mozRequestFullScreen) {
+        (element as any).mozRequestFullScreen();
+      }
+
+      setIsFullScreen(true); // Update the state to reflect entering fullscreen
+    }
+  };
+
   return (
     <nav className="flex items-center justify-between">
       <div className="flex gap-2 items-center">
@@ -113,6 +153,7 @@ export const Navbar = () => {
           <DocumentInput />
           <div className="flex">
             <Menubar className="border-none bg-transparent shadow-none h-auto p-0">
+              {/* File Menu */}
               <MenubarMenu>
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   File
@@ -124,14 +165,6 @@ export const Navbar = () => {
                       Save
                     </MenubarSubTrigger>
                     <MenubarSubContent>
-                      <MenubarItem onClick={onSaveJSON}>
-                        <FileJsonIcon className="size-4 mr-2" />
-                        JSON
-                      </MenubarItem>
-                      <MenubarItem onClick={onSaveHTML}>
-                        <GlobeIcon className="size-4 mr-2" />
-                        HTML
-                      </MenubarItem>
                       <MenubarItem onClick={() => window.print()}>
                         <BsFilePdf className="size-4 mr-2" />
                         PDF
@@ -144,16 +177,11 @@ export const Navbar = () => {
                   </MenubarSub>
                   <MenubarItem>
                     <ImportIcon className="size-4 mr-2" />
-                    Import
+                    Import / Open
                   </MenubarItem>
                   <MenubarItem>
                     <FilePlus className="size-4 mr-2" />
                     New Document
-                  </MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>
-                    <FileUpIcon className="size-4 mr-2" />
-                    Open
                   </MenubarItem>
                   <MenubarSeparator />
                   <MenubarItem>
@@ -171,7 +199,7 @@ export const Navbar = () => {
                   </MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
-
+              {/* Edit Menu */}
               <MenubarMenu>
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   Edit
@@ -191,7 +219,7 @@ export const Navbar = () => {
                   </MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
-
+              {/* Insert Menu */}
               <MenubarMenu>
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   Insert
@@ -238,7 +266,7 @@ export const Navbar = () => {
                   </MenubarSub>
                 </MenubarContent>
               </MenubarMenu>
-
+              {/* Format Menu */}
               <MenubarMenu>
                 <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
                   Format
@@ -280,8 +308,7 @@ export const Navbar = () => {
                         }
                       >
                         <StrikethroughIcon className="size-4 mr-2" />
-                        <span>Strikethrough</span>
-                        <MenubarShortcut>⌘S</MenubarShortcut>
+                        Strikethrough
                       </MenubarItem>
                     </MenubarSubContent>
                   </MenubarSub>
@@ -292,6 +319,46 @@ export const Navbar = () => {
                   >
                     <RemoveFormattingIcon className="size-4 mr-2" />
                     Clear formatting
+                  </MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+              {/* Translate Menu */}
+              <MenubarMenu>
+                <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
+                  Translate
+                </MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    <Link href="/translate/assames/">
+                      <div className="flex items-center">
+                        <span className="text-xl mr-2">অ</span>
+                        Assamese
+                      </div>
+                    </Link>
+                  </MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+              {/* Switch Format Menu */}
+              <MenubarMenu>
+                <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
+                  Switch Format
+                </MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    <FileJsonIcon className="size-4 mr-2" />
+                    Switch Format
+                  </MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+              {/* Full Screen Menu */}
+              <MenubarMenu>
+                <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] rounded-sm hover:bg-muted h-auto">
+                  Full Screen
+                </MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem onClick={toggleFullScreen}>
+                    <FileUpIcon className="size-4 mr-2" />
+                    Toggle Full Screen
                   </MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
