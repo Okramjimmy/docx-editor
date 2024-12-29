@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BsFilePdf } from "react-icons/bs";
+import { generateHTML } from '@tiptap/core'; 
 import {
   BoldIcon,
   ImportIcon,
@@ -73,7 +74,7 @@ export const Navbar = () => {
   const onSaveHTML = () => {
     if (!editor) return;
 
-    const content = editor.getHTML();
+    const content = editor.generateHTML();
     const blob = new Blob([content], {
       type: "text/html",
     });
